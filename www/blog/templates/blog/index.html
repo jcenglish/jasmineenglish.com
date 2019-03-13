@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+
+{% if latest_entry_list %}
+<ul>
+  {% for entry in latest_entry_list %}
+  <li><a href="{% url 'blog:entry' entry.date_published.year entry.date_published.month entry.slug %}">{{ entry.title}}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No blog entries.</p>
+{% endif %}
